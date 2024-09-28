@@ -9,6 +9,11 @@ let sortingGenerator;
 function setup() {
     createCanvas(600, 400).parent('visualization');
     resetList();
+
+    // Add event listeners for input changes
+    document.getElementById("minRange").addEventListener("input", resetList);
+    document.getElementById("maxRange").addEventListener("input", resetList);
+    document.getElementById("numValues").addEventListener("input", resetList);
 }
 
 // Function to reset the list of values with user-defined range
@@ -17,7 +22,8 @@ function resetList() {
     let maxRange = parseInt(document.getElementById("maxRange").value);
     let numValues = parseInt(document.getElementById("numValues").value);
 
-    w = width / numValues;
+    // Ensure w does not become 0
+    w = Math.max(width / numValues, 1); // Prevent division by zero
     values = new Array(numValues);
     for (let i = 0; i < values.length; i++) {
         values[i] = random(minRange, maxRange);
