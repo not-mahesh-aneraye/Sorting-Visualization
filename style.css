@@ -19,6 +19,7 @@ h1 {
     font-size: 2.5em;
     font-weight: 300;
     color: #333;
+    text-align: center; /* Centering the title */
 }
 
 .controls {
@@ -28,12 +29,13 @@ h1 {
     padding: 20px;
     margin: 20px;
     border-radius: 10px;
-    width: 60%; /* Adjusted width for more balanced control layout */
+    width: 60%; /* Default width for larger screens */
 }
 
 .inputs, .dropdowns {
     display: flex;
-    justify-content: space-around;
+    flex-wrap: wrap; /* Allow items to wrap for smaller screens */
+    justify-content: space-between;
     margin-bottom: 15px;
 }
 
@@ -44,40 +46,42 @@ label {
 
 input, select {
     padding: 8px;
-    margin: 0 15px;
+    margin: 5px 0; /* Adjusted margin for better spacing */
     border: 1px solid #ccc;
     border-radius: 5px;
     outline: none;
+    flex: 1; /* Allow inputs to grow */
+    min-width: 120px; /* Minimum width for inputs */
 }
 
 select {
-    width: 150px;
+    width: 100%; /* Full width on mobile */
 }
 
 .buttons {
     display: flex;
     justify-content: space-between; /* Distribute the buttons to the left and right */
     margin-top: 20px;
+    flex-wrap: wrap; /* Allow buttons to wrap */
+}
+
+.left-button, .right-button {
+    flex: 1; /* Allow buttons to grow equally */
+    margin: 5px; /* Add margin between buttons */
+    padding: 10px 0; /* Vertical padding only */
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    transition: background 0.3s ease;
 }
 
 .left-button {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
     background-color: #007bff;
-    color: white;
-    cursor: pointer;
-    transition: background 0.3s ease;
 }
 
 .right-button {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
     background-color: #28a745;
-    color: white;
-    cursor: pointer;
-    transition: background 0.3s ease;
 }
 
 .left-button:hover {
@@ -94,9 +98,10 @@ select {
 
 #visualization {
     margin: 20px auto;
-    border: 2px solid #647a86;
+    border: 2px solid #9db5c2;
     border-radius: 10px;
     background-color: #9db5c2;
+    width: 90%; /* Width for better responsiveness */
 }
 
 canvas {
@@ -105,4 +110,39 @@ canvas {
     border: 2px solid #ddd;
     background-color: #f0f2f5;
     border-radius: 10px;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2em; /* Smaller font size on mobile */
+    }
+
+    .controls {
+        width: 90%; /* Full width on mobile */
+        padding: 10px; /* Less padding */
+    }
+
+    .inputs, .dropdowns {
+        flex-direction: column; /* Stack inputs vertically */
+    }
+
+    .buttons {
+        flex-direction: column; /* Stack buttons vertically */
+    }
+
+    .left-button, .right-button {
+        margin: 5px 0; /* Adjust margin for stacked buttons */
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.5em; /* Smaller font size on very small screens */
+    }
+
+    input, select {
+        padding: 6px; /* Smaller padding */
+        font-size: 0.9em; /* Smaller font size for inputs */
+    }
 }
