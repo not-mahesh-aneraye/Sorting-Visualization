@@ -19,7 +19,7 @@ h1 {
     font-size: 2.5em;
     font-weight: 300;
     color: #333;
-    text-align: center; /* Centering the title */
+    text-align: center;
 }
 
 .controls {
@@ -29,13 +29,14 @@ h1 {
     padding: 20px;
     margin: 20px;
     border-radius: 10px;
-    width: 60%; /* Default width for larger screens */
+    width: 90%; /* Changed to 90% for better mobile fit */
+    max-width: 600px; /* Set a maximum width */
 }
 
 .inputs, .dropdowns {
     display: flex;
-    flex-wrap: wrap; /* Allow items to wrap for smaller screens */
-    justify-content: space-between;
+    flex-direction: column; /* Stack elements vertically for small screens */
+    align-items: center; /* Center elements horizontally */
     margin-bottom: 15px;
 }
 
@@ -50,34 +51,32 @@ input, select {
     border: 1px solid #ccc;
     border-radius: 5px;
     outline: none;
-    flex: 1; /* Allow inputs to grow */
-    min-width: 120px; /* Minimum width for inputs */
+    width: 100%; /* Make input fields full width */
+    max-width: 200px; /* Set a maximum width for input fields */
 }
 
 select {
-    width: 100%; /* Full width on mobile */
+    width: 100%; /* Make select dropdown full width */
 }
 
 .buttons {
     display: flex;
-    justify-content: space-between; /* Distribute the buttons to the left and right */
+    flex-direction: column; /* Stack buttons vertically */
+    align-items: center; /* Center buttons */
     margin-top: 20px;
-    flex-wrap: wrap; /* Allow buttons to wrap */
 }
 
 .left-button, .right-button {
-    flex: 1; /* Allow buttons to grow equally */
-    margin: 5px; /* Add margin between buttons */
-    padding: 10px 0; /* Vertical padding only */
+    padding: 10px 20px;
     border: none;
     border-radius: 5px;
+    margin: 5px 0; /* Adjusted margin for spacing */
+    background-color: #007bff;
     color: white;
     cursor: pointer;
     transition: background 0.3s ease;
-}
-
-.left-button {
-    background-color: #007bff;
+    width: 100%; /* Make buttons full width */
+    max-width: 200px; /* Set a maximum width for buttons */
 }
 
 .right-button {
@@ -98,10 +97,11 @@ select {
 
 #visualization {
     margin: 20px auto;
-    border: 2px solid #9db5c2;
+    border: 2px solid #647a86;
     border-radius: 10px;
     background-color: #9db5c2;
-    width: 90%; /* Width for better responsiveness */
+    width: 90%; /* Adjusted for better mobile fit */
+    max-width: 600px; /* Set a maximum width */
 }
 
 canvas {
@@ -112,37 +112,18 @@ canvas {
     border-radius: 10px;
 }
 
-/* Media Queries for Responsiveness */
-@media (max-width: 768px) {
+/* Media Queries for Mobile Responsiveness */
+@media (max-width: 600px) {
     h1 {
-        font-size: 2em; /* Smaller font size on mobile */
+        font-size: 1.8em; /* Adjusted font size for mobile */
     }
 
     .controls {
-        width: 90%; /* Full width on mobile */
-        padding: 10px; /* Less padding */
+        padding: 15px;
+        margin: 10px;
     }
 
-    .inputs, .dropdowns {
-        flex-direction: column; /* Stack inputs vertically */
-    }
-
-    .buttons {
-        flex-direction: column; /* Stack buttons vertically */
-    }
-
-    .left-button, .right-button {
-        margin: 5px 0; /* Adjust margin for stacked buttons */
-    }
-}
-
-@media (max-width: 480px) {
-    h1 {
-        font-size: 1.5em; /* Smaller font size on very small screens */
-    }
-
-    input, select {
-        padding: 6px; /* Smaller padding */
-        font-size: 0.9em; /* Smaller font size for inputs */
+    input, select, .left-button, .right-button {
+        max-width: 100%; /* Full width on mobile */
     }
 }
